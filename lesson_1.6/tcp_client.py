@@ -8,5 +8,7 @@ while True:
         break
     s.send(bytes(message, 'utf-8'))
     resp = s.recv(1024)
+    if not resp:
+        break
     print('\nServer response:\n', str(resp, 'utf-8'), '\n', sep='')
 s.close()
