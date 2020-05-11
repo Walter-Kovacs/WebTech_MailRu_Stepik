@@ -1,1 +1,3 @@
-bind = "127.0.0.1:8080"
+daemon = True
+bind = "0.0.0.0:8000"
+errorlog = "tmp_ask.log"
