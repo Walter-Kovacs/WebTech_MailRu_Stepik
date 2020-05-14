@@ -19,6 +19,7 @@ class TestModels(unittest.TestCase):
     def test_import(self):
         import qa.models
 
+
 class TestUser(unittest.TestCase):
     def test_user(self):
         try:
@@ -27,6 +28,7 @@ class TestUser(unittest.TestCase):
                 defaults={'password':'y', 'last_login': timezone.now()})
         except:
             assert False, "Failed to create user model, check db connection"
+
 
 class TestQuestion(unittest.TestCase):
     def test_question(self):
@@ -132,5 +134,14 @@ class TestAnswer(unittest.TestCase):
             assert False, "Failed to create answer model, check db connection"
 
 
+"""
+# terminal: python test_lesson_2_3_.py ClassName
 suite = unittest.TestLoader().loadTestsFromTestCase(globals().get(sys.argv[1]))
 unittest.TextTestRunner(verbosity=0).run(suite)
+"""
+
+# terminal: python test_lesson_2_3_.py
+class_list = ["TestModels", "TestUser", "TestQuestion", "TestQuestionManager", "TestAnswer",]
+for class_name in class_list:
+    suite = unittest.TestLoader().loadTestsFromTestCase(globals().get(class_name))
+    unittest.TextTestRunner(verbosity=0).run(suite)
