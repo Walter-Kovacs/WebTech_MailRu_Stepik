@@ -4,10 +4,10 @@ from django.db import models
 
 class QuestionManager(models.Manager):
     def new(self):
-        pass
+        return self.order_by('-added_at')
 
     def popular(self):
-        pass
+        return self.order_by('-rating')
 
 
 class Question(models.Model):
@@ -23,6 +23,6 @@ class Question(models.Model):
 
 class Answer(models.Model):
     text = models.TextField()
-    added_at = models.DateField()
+    added_at = models.DateField(auto_now_add=True)
     question = models.ForeignKey(Question, on_delete=models.DO_NOTHING)
     author = models.ForeignKey(User, blank=True, null=True, on_delete=models.DO_NOTHING)

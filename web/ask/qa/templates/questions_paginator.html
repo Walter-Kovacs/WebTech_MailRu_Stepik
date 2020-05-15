@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Questions and answers</title>
+</head>
+<body>
+<h1>Questions</h1>
+<ul>
+    {% for question in questions_list %}
+    <li>
+        [{% if paginator_type == 'default' %}
+            {{ question.added_at }}
+        {% elif paginator_type == 'popular' %}
+            {{ question.rating }}
+        {% endif %}]
+        <a href="/question/{{ question.id }}/">{{ question.title }}</a>
+    </li>
+    {% endfor %}
+</ul>
+<nav>
+{% for n in paginator.page_range %}
+    {% if n == page.number%}
+        {{ n }}
+    {% else %}
+        <a href="{{ paginator.url }}{{ n }}">{{ n }}</a>
+    {% endif%}
+{% endfor %}
+</nav>
+</body>
+</html>

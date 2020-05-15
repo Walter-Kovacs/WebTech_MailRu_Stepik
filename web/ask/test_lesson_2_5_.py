@@ -37,5 +37,6 @@ class TestInitData(unittest.TestCase):
             answer = Answer.objects.create(text='answer ' + str(i), question=question, author=user)
 
 
-suite = unittest.TestLoader().loadTestsFromTestCase(globals().get(sys.argv[1]))
+# suite = unittest.TestLoader().loadTestsFromTestCase(globals().get(sys.argv[1]))
+suite = unittest.TestLoader().loadTestsFromTestCase(globals().get("TestInitData"))
 unittest.TextTestRunner(verbosity=0).run(suite)
