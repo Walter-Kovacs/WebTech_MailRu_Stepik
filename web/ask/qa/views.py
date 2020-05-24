@@ -65,8 +65,9 @@ def question_page(request, question_id):
             new_answer_form.save()
             return HttpResponseRedirect(question.get_url())
     else:
-        new_answer_form = AnswerForm(initial={"question": question.pk})
-        answers = Answer.objects.filter(question_id=question_id)
+        new_answer_form = AnswerForm(initial={"question": question.id})
+
+    answers = Answer.objects.filter(question_id=question_id)
 
     return render(request, 'question.html', {
         'question': question,
