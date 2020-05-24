@@ -7,6 +7,13 @@
 <body>
 <h1>{{ question.title }}</h1>
 {{question.text}}
+<p><a href="/">Return to questions list</a></p>
+<form method="POST" action="/question/{{ question.id }}/">
+    {% csrf_token %}
+    <p><b>Type answer here:</b></p>
+    {{ new_answer_form.text }}
+    <button type="submit">Send</button>
+</form>
 <h2>Answers</h2>
 <ul>
     {% for answer in answers %}

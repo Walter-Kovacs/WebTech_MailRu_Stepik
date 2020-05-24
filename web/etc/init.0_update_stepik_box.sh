@@ -7,3 +7,8 @@ sudo python -m pip install --upgrade pip
 sudo python -m pip install gunicorn
 sudo python -m pip install django==2.0
 sudo python -m pip install mysqlclient
+
+sudo rm /etc/nginx/sites-enabled/default
+sudo nginx
+sudo service mysql start
+echo "ATTENTION! Now create 1) web/ask/mysql.conf 2) stepik_ask database 3) ./migrations migrate"
