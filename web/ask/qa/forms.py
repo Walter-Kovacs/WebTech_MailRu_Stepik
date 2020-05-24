@@ -20,26 +20,7 @@ class AskForm(forms.Form):
         return question
 
 
-class AnswerForm(forms.Form):
-    text = forms.CharField(widget=forms.Textarea)
-    question = Question()
-
-    '''
-    def __init__(self, q, **kwargs):
-        self.question = question
-        super(AnswerForm, self).__init__(**kwargs)
-    '''
-
-    def clean_text(self):
-        text = self.cleaned_data['text']
-        return text
-
-    def clean_question(self):
-        question = self.cleaned_data['question']
-        return question
-
-    def save(self):
-        answer = Answer(**self.cleaned_data)
-        answer.question = Question.objects.get(id=self.question_id)
-        answer.save()
-        return answer
+class AnswerForm(forms.ModelForm):
+    class Meta:
+        model = Answer
+        fields = ['text', 'question']

@@ -37,5 +37,14 @@ class TestAnswerForm(unittest.TestCase):
         assert question is not None, "AnswerForm does not have question field"
         assert isinstance(question, (forms.IntegerField, forms.ChoiceField)), "author field is not an instalce of IntegerField or ChoiceField"
 
+"""
+# terminal: python test_lesson_2_6_.py ClassName
 suite = unittest.TestLoader().loadTestsFromTestCase(globals().get(sys.argv[1]))
 unittest.TextTestRunner(verbosity=0).run(suite)
+"""
+
+# terminal: python test_lesson_2_6_.py
+class_list = ["TestImport", "TestAskForm", "TestAnswerForm",]
+for class_name in class_list:
+    suite = unittest.TestLoader().loadTestsFromTestCase(globals().get(class_name))
+    unittest.TextTestRunner(verbosity=0).run(suite)

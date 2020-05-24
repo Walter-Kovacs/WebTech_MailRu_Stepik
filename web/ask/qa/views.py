@@ -61,12 +61,11 @@ def question_page(request, question_id):
 
     if request.method == 'POST':
         new_answer_form = AnswerForm(request.POST)
-        new_answer_form.question_id = question_id
         if new_answer_form.is_valid():
             new_answer_form.save()
             return HttpResponseRedirect(question.get_url())
     else:
-        new_answer_form = AnswerForm()
+        new_answer_form = AnswerForm(initial={"question": question.pk})
         answers = Answer.objects.filter(question_id=question_id)
 
     return render(request, 'question.html', {
